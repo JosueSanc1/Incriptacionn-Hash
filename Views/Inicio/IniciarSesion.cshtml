@@ -1,0 +1,85 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #001f3f; /* Fondo azul marino */
+            color: #fff; /* Texto blanco */
+            font-family: Arial, sans-serif; /* Fuente predeterminada */
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.1); /* Tarjeta transparente */
+        }
+
+        .card-header {
+            background-color: transparent; /* Encabezado transparente */
+            color: #fff;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Botón azul */
+            border: none;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3; /* Color azul más oscuro al pasar el ratón */
+            }
+
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-8">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0">Iniciar Sesión</h4>
+                    </div>
+                    <div class="card-body">
+
+                        <form asp-controller="Inicio" asp-action="IniciarSesion" method="post">
+                            <div class="mb-3">
+                                <input class="form-control" type="email" placeholder="Correo" required name="Correo" />
+                            </div>
+                            <div class="mb-3">
+                                <input class="form-control" type="password" placeholder="Contraseña" required name="Contraseña" />
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-primary btn-block" type="submit">Iniciar Sesión</button>
+                            </div>
+                            @if (ViewData["Mensaje"] != null)
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    @ViewData["Mensaje"]
+                                </div>
+                            }
+                            <div class="text-center">
+                                ¿No tienes una cuenta? <a href="@Url.Action("Registrarse","Inicio")">Regístrate</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
